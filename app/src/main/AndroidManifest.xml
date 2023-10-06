@@ -13,10 +13,11 @@
         android:theme="@style/Theme.BopIt"
         tools:targetApi="31">
         <activity
-            android:name=".PantallaJuegoActivity"
-            android:exported="false" />
-        <activity
             android:name=".PreferenciasActivity"
+            android:exported="false"
+            android:label="@string/title_activity_preferencias" />
+        <activity
+            android:name=".PantallaJuegoActivity"
             android:exported="false" />
         <activity
             android:name=".AcercaDeActivity"
