@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">BopIt</string>
+
+    //Pantalla "Home"
+    <string name="tituloHome">BOP IT</string>
+    <string name="textoBotonJugar">Jugar</string>
+    <string name="textoBotonAcercaDe">Acerca de</string>
+    <string name="textoBotonPreferencias">Preferencias</string>
+
+    //Pantalla "Acerca De"
+    <string name="tituloAcercaDe">Acerca De</string>
+    <string name="textoAcercaDe">Juego Bop It para dispositivos móviles, en este juego deberás realizar la acción que se muestre en pantalla antes de que se acabe el tiempo! Aplicación desarrollada por Benjamín Rodríguez</string>
+
+    //Pantalla "Preferencias"
+    <string name="tituloPreferencias">Preferencias</string>
+
+</resources>
