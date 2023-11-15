@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">BopIt</string>
 
+    //Pantalla de juego
+    <string name="puntuacion">Puntuación actual</string>
+    <string name="puntuacion_inicial">00</string>
+
     //Pantalla "Home"
     <string name="tituloHome">Bop It Mobile</string>
     <string name="textoBotonJugar">Jugar</string>
@@ -14,6 +18,11 @@
     //Pantalla "Preferencias"
     <string name="tituloPreferencias">Preferencias</string>
     <string name="title_activity_preferencias">PreferenciasActivity</string>
+
+    //Pantalla final
+    <string name="PuntajeObtenido">Tu puntaje obtenido fue:</string>
+    <string name="PuntajeMayor">Tu mejor puntaje es:</string>
+    <string name="BotonSalir">Volver al menú</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Configuración Splash Screen</string>
