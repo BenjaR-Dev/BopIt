@@ -13,7 +13,9 @@
 
     //Pantalla "Acerca De"
     <string name="tituloAcercaDe">Acerca De</string>
-    <string name="textoAcercaDe">Juego Bop It para dispositivos móviles, en este juego deberás realizar la acción que se muestre en pantalla antes de que se acabe el tiempo! Aplicación desarrollada por Benjamín Rodríguez</string>
+    <string name="textoAcercaDe">Juego Bop It para dispositivos móviles, en este juego deberás realizar la acción que se muestre en pantalla antes de que se acabe el tiempo!</string>
+    <string name="tituloEquipoDesarrollo">Equipo de desarrollo</string>
+    <string name="textoEquipoDesarrollo">Esta aplicación fue desarrollada por Benjamín Rodríguez, estudiante de Ingeniería en Desarrollo de Videojuegos y Realidad Virtual.</string>
 
     //Pantalla "Preferencias"
     <string name="tituloPreferencias">Preferencias</string>

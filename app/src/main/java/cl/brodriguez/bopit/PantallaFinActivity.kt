@@ -16,6 +16,13 @@ class PantallaFinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_fin)
 
+        //Pantalla completa
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                )
+
         //Text views
         textViewPuntajeObtenido = findViewById(R.id.textViewPuntajeObtenido)
         textViewPuntajeMayor = findViewById(R.id.textViewMejorPuntaje)
@@ -24,7 +31,7 @@ class PantallaFinActivity : AppCompatActivity() {
         val puntajeObtenido = intent.getIntExtra("PUNTAJE", 0)
         textViewPuntajeObtenido.text = "$puntajeObtenido"
 
-        //Guardar puntaje máximo si es necesario
+        //Guardar puntaje máximo
         val sharedPreferences = getSharedPreferences("PuntajeMayor", Context.MODE_PRIVATE)
         val puntajeMayor = sharedPreferences.getInt("puntaje_mayor", 0)
 

@@ -15,11 +15,13 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.media.PlaybackParams
 import android.os.Looper
 import android.widget.Switch
 import android.widget.TextView
 import kotlin.random.Random
 import android.os.CountDownTimer
+import android.widget.ImageView
 
 enum class TipoAccion {
     Deslizamiento_arriba,
@@ -57,10 +59,12 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
 
     //Manejo del puntaje y textos
     private var puntaje: Int = 0
+    private var dificultad: Int = 0
     private lateinit var textViewPuntuacion: TextView
     private lateinit var textViewSolicitud: TextView
     private lateinit var textViewTiempo: TextView
     private lateinit var textViewVidas: TextView
+    private lateinit var imageViewAccion: ImageView
 
     //Handler y Runnable
     private val handler = Handler(Looper.getMainLooper())
@@ -77,21 +81,43 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_juego)
 
+        //Pantalla completa
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                )
+
+        //Se encuentran todos los text view
         textViewPuntuacion = findViewById(R.id.textViewPuntuacion)
         textViewSolicitud = findViewById(R.id.textViewSolicitud)
         textViewTiempo = findViewById(R.id.textViewTiempo)
         textViewVidas = findViewById(R.id.textViewVidas)
 
+        //Se encuentra la imagen del gesto a realizar
+        imageViewAccion = findViewById(R.id.iconoAccion)
+
         gestureDetector = GestureDetector(this, MyGestureListener())
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
+
+
+        //Definición de los audios a reproducir
         mediaPlayer = MediaPlayer.create(this, R.raw.win)
         mediaPlayer2 = MediaPlayer.create(this, R.raw.defeat)
         mediaPlayer3 = MediaPlayer.create(this, R.raw.background)
 
+        //Velocidad del audio de fondo
+        val playbackParams = PlaybackParams()
+        playbackParams.speed = 1.0f
+        mediaPlayer3.playbackParams = playbackParams
+
+        //Se define el audio de fondo en bucle y se inicia
         mediaPlayer3.isLooping = true
         mediaPlayer3.start()
+
+
         aleatorizarAccion()
 
         iniciarCuentaRegresiva()
@@ -108,23 +134,41 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
     }
 
     private fun aumentarDificultad(){
-        if (puntaje < 7){
+        //Valor del puntaje actual + la dificultad definida en preferencias, esto para calcular la dificultad correspondiente
+        var total = puntaje + dificultad
+
+        //Esta variable define cada cuanto puntaje hay un cambio de dificultad
+        var saltoDeNivel = 7
+
+
+        if (total < saltoDeNivel){
             tiempoCuentaRegresiva = 5000
+            aumentarVelocidadAudio(1f)
 
-        }else if (puntaje < 14){
+        }else if (total < saltoDeNivel*2){
             tiempoCuentaRegresiva = 4000
+            aumentarVelocidadAudio(1.2f)
 
-        }else if (puntaje < 21){
+        }else if (total < saltoDeNivel*3){
             tiempoCuentaRegresiva = 3000
+            aumentarVelocidadAudio(1.4f)
 
-        }else if (puntaje < 28){
+        }else if (total < saltoDeNivel*4){
             tiempoCuentaRegresiva = 2000
+            aumentarVelocidadAudio(1.7f)
 
-        }else if (puntaje < 35){
+        }else if (total < saltoDeNivel*5){
             tiempoCuentaRegresiva = 1000
+            aumentarVelocidadAudio(2f)
 
         }
 
+    }
+
+    private fun aumentarVelocidadAudio(velocidad: Float){
+        val playbackParams = PlaybackParams()
+        playbackParams.speed = velocidad
+        mediaPlayer3.playbackParams = playbackParams
     }
 
     private fun comprobarAccion(){
@@ -200,26 +244,31 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
         if (numeroRandom == 0) {
             accionSolicitada = TipoAccion.Deslizamiento_arriba
             textViewSolicitud.text = "Desliza el dedo hacia arriba"
+            imageViewAccion.setImageResource(R.drawable.arriba)
         }
 
         if (numeroRandom == 1) {
             accionSolicitada = TipoAccion.Deslizamiento_abajo
             textViewSolicitud.text = "Desliza el dedo hacia abajo"
+            imageViewAccion.setImageResource(R.drawable.abajo)
         }
 
         if (numeroRandom == 2) {
             accionSolicitada = TipoAccion.Deslizamiento_izquierda
             textViewSolicitud.text = "Desliza el dedo hacia la izquierda"
+            imageViewAccion.setImageResource(R.drawable.izquierda)
         }
 
         if (numeroRandom == 3) {
             accionSolicitada = TipoAccion.Deslizamiento_derecha
             textViewSolicitud.text = "Desliza el dedo hacia la derecha"
+            imageViewAccion.setImageResource(R.drawable.derecha)
         }
 
         if (numeroRandom == 4){
             accionSolicitada = TipoAccion.Agitacion
             textViewSolicitud.text = "Agita tu celular"
+            imageViewAccion.setImageResource(R.drawable.agitar)
         }
     }
 
