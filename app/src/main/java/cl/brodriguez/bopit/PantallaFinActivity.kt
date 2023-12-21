@@ -36,7 +36,6 @@ class PantallaFinActivity : AppCompatActivity() {
 
         //Recuperar valor
         val puntajeObtenido = intent.getIntExtra("PUNTAJE", 0)
-        Toast.makeText(applicationContext, "$puntajeObtenido", Toast.LENGTH_SHORT).show()
         textViewPuntajeObtenido.text = "$puntajeObtenido"
 
         //Guardar puntaje máximo

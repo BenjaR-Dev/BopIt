@@ -19,16 +19,38 @@
 
     //Pantalla "Preferencias"
     <string name="tituloPreferencias">Preferencias</string>
+    <string name="seccion1">Configuración de la aplicación</string>
+    <string name="seccion2">Configuración de la partida</string>
+        <string name="DuracionSplashScreen">Duración Splash Screen</string>
+        <string name="instrucciones">No volver a mostrar instrucciones</string>
+        <string name="Dificultad">Nivel de dificultad</string>
+        <string name="RecordActual">Record actual</string>
+
     <string name="title_activity_preferencias">PreferenciasActivity</string>
 
     //Pantalla final
-    <string name="PuntajeMayorPrevio">Tu mejor puntaje es:</string>
+    <string name="PuntajeMayorPrevio">Tu mejor puntaje previo era:</string>
     <string name="PuntajeObtenido">Tu puntaje obtenido en esta partida fue:</string>
     <string name="PuntajeMayorSuperado">Superaste el record, felicidades!</string>
     <string name="PuntajeMayorNoSuperado">No superaste el record, sigue jugando!</string>
     <string name="PuntajeMayorNuevo">Tu nuevo mejor puntaje es:</string>
     <string name="PuntajeMayorSeMantiene">El mejor puntaje sigue siendo:</string>
     <string name="BotonSalir">Volver al menú</string>
+
+    //Diálogo de instrucciones
+    <string name="TextoInstrucciones">Bienvenido a Bop It Mobile! \n\nLas instrucciones del juego son las siguientes: \nSe te pedirá que realices
+        una acción determinada y solo tendrás un tiempo limitado para realizar esa acción, pero necesitas ser veloz! Ya que cada vez hay menos tiempo
+    para reaccionar. \n\nObtén un mayor puntaje realizando la mayor cantidad de acciones que sea posible.
+        \n\nEn \"Preferencias\" puedes modificar la dificultad inicial.</string>
+    <string name="NoVolverAMostrar">No volver a mostrar</string>
+    <string name="Cerrar">Cerrar</string>
+
+
+
+
+
+
+
 
     <!-- Preference Titles -->
     <string name="messages_header">Configuración Splash Screen</string>

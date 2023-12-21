@@ -7,8 +7,11 @@ import android.content.Context
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.preference.SwitchPreferenceCompat
 
 
 class PreferenciasActivity : AppCompatActivity() {
@@ -37,6 +40,18 @@ class PreferenciasActivity : AppCompatActivity() {
         //Persistencia
         val sharedPreferences = getSharedPreferences("PuntajeMayor", Context.MODE_PRIVATE)
         val mejorPuntaje = sharedPreferences.getInt("puntaje_mayor", 0)
+
+        /*
+        // Guardar un nuevo valor en SharedPreferences
+        val sharedPreferences2 = getSharedPreferences("NoVolverAMostrar", Context.MODE_PRIVATE)
+        val editor = sharedPreferences2.edit()
+        val valorNoVolverAMostrar = "false"
+        editor.putString("NoVolverAMostrar", valorNoVolverAMostrar)
+        editor.apply()
+        */
+
+
+
 
         textViewMejorPuntaje = findViewById(R.id.TextView7)
 
@@ -74,6 +89,34 @@ class PreferenciasActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
+        }
+    }
+}
+
+
+class SettingsFragment : PreferenceFragmentCompat() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+
+        // referencia del switch
+        val switchPreference = findPreference<SwitchPreferenceCompat>("novolveramostrar")
+        Toast.makeText(requireContext(), "ME CAGO EN TODO", Toast.LENGTH_SHORT).show()
+
+        val sharedPreferences = requireActivity().getSharedPreferences("NoVolverAMostrar", Context.MODE_PRIVATE)
+        val valorNoVolverAMostrar = sharedPreferences.getString("NoVolverAMostrar", "")
+
+        switchPreference?.isChecked = valorNoVolverAMostrar == "true"
+
+        switchPreference?.setOnPreferenceChangeListener { preference, newValue ->
+            val switched = newValue as Boolean
+
+            val editor = sharedPreferences.edit()
+            editor.putString("NoVolverAMostrar", switched.toString())
+            editor.apply()
+
+
+            true
         }
     }
 }

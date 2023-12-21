@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/dialog_message"
+            android:layout_width="347dp"
+            android:layout_height="399dp"
+            android:text="@string/TextoInstrucciones"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_no_mostrar"
+            android:layout_width="135dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="32dp"
+            android:layout_weight="1"
+            android:text="@string/NoVolverAMostrar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_message" />
+
+        <Button
+            android:id="@+id/button_cerrar"
+            android:layout_width="121dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_weight="1"
+            android:text="@string/Cerrar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_no_mostrar"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_message" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

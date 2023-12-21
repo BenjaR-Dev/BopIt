@@ -1,14 +1,49 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory>
+    <PreferenceCategory
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/seccion1">
 
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/reply_entries"
             android:entryValues="@array/reply_values"
-            android:key="list_preference_1"
+            android:key="duracionsplash"
+            android:title="@string/DuracionSplashScreen" />
+
+        <SwitchPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="false"
+            android:title="@string/NoVolverAMostrar"
+            app:key="novolveramostrar" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/seccion1">
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="dificultad"
             android:title="Duración Splash Screen" />
+        <ListPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="record"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="list_preference_2"
+            android:title="Duración Splash Screen" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="Default value"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Edit text preference" />
 
     </PreferenceCategory>
 

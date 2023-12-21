@@ -7,11 +7,54 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import android.app.AlertDialog
+import android.content.Context
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        //Crear el Alert Dialog
+        val dialogBuilder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.instrucciones_dialog_layout, null)
+        dialogBuilder.setView(dialogView)
+
+        // Obtener las referencias de los elementos del diálogo
+        val dialogMessage = dialogView.findViewById<TextView>(R.id.dialog_message)
+        val buttonNoMostrar = dialogView.findViewById<Button>(R.id.button_no_mostrar)
+        val buttonCerrar = dialogView.findViewById<Button>(R.id.button_cerrar)
+
+        //Texto que mostrará el dialogo
+        dialogMessage.text = getString(R.string.TextoInstrucciones)
+
+        val alertDialog = dialogBuilder.create()
+
+        //BOTON NO VOLVER A MOSTRAR
+        buttonNoMostrar.setOnClickListener {
+            val sharedPreferences = getSharedPreferences("NoVolverAMostrar", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            val valorNoVolverAMostrar = "true"
+            editor.putString("NoVolverAMostrar", valorNoVolverAMostrar)
+            editor.apply()
+            alertDialog.dismiss()
+        } //BOTON CERRAR
+        buttonCerrar.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+
+
+        // Mostrar el diálogo
+        val sharedPreferences = getSharedPreferences("NoVolverAMostrar", Context.MODE_PRIVATE)
+        val noVolverAMostrar = sharedPreferences.getString("NoVolverAMostrar", "")
+        if (noVolverAMostrar == "false"){
+            alertDialog.show()
+        }
 
         //Pantalla completa
         window.decorView.systemUiVisibility = (
