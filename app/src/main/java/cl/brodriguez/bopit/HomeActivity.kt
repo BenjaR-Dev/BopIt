@@ -52,9 +52,9 @@ class HomeActivity : AppCompatActivity() {
         // Mostrar el diálogo
         val sharedPreferences = getSharedPreferences("NoVolverAMostrar", Context.MODE_PRIVATE)
         val noVolverAMostrar = sharedPreferences.getString("NoVolverAMostrar", "")
-        if (noVolverAMostrar == "false"){
-            alertDialog.show()
-        }
+
+        alertDialog.show()
+
 
         //Pantalla completa
         window.decorView.systemUiVisibility = (

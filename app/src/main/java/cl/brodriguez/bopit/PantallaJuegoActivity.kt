@@ -256,7 +256,7 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
     }
 
     private fun aleatorizarAccion() {
-        var numeroRandom: Int = Random.nextInt(0, 4)
+        var numeroRandom: Int = Random.nextInt(0, 5)
 
         if (numeroRandom == 0) {
             accionSolicitada = TipoAccion.Deslizamiento_arriba

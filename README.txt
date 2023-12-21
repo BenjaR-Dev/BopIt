@@ -1,15 +1,13 @@
-Aplicación: Bop It Mobile (3ra versión)
+Aplicación: Bop It Mobile (POA)
 Desarrolado por: Benjamín Rodríguez
 
 En este juego deberás realizar la acción que se te indique por pantalla lo antes posible, ¡antes de que se acabe el tiempo!, deberás ser rápido o de lo contrario perderás.
 
-En esta tercera versión de la aplicación BopIt mobile se añadieron múltiples funcionalidades que permiten dislumbrar el flujo del juego, primero que nada se añadió la detección de la agitación del dispositivo por medio del acelerómetro, definiendo umbrales para la correcta detección. A su vez, también se implementaron diferentes algoritmos, para definir la aleatoriedad de las acciones que se nos pide realizar y aumentar la dificultad gradual y constantemente. Se añadió un sistema de puntaje y vidas, cada vez que se realiza una acción correcta se suma puntaje, pero si fallamos perderemos una de las 3 vidas que se tienen al inicio, por último, el puntaje más alto obtenido siempre será guardado de forma persistente y podrá visualizarse como un texto en la pestaña de Preferencias.
+En esta última versión del juego Bop It se añadieron múltiples funcionalidades, entre ellas la inclusión del modo "Pantalla Completa" durante todo el juego y de íconos relacionados al gesto que se solicita. También se hace uso de diversos menús (Toolbars) con diferentes características, así como también una ventana de diálogo la cual nos muestra las instrucciones del juego y se muestra cada vez que ingresamos a la pantalla de inicio, esta ventana de diálogo también posee una casilla de "No volver a mostrar".
+También se mejoró el algoritmo de dificultad y de la música, haciendo que el juego sea cada vez más desafiante y que la música acompañe a la situación.
 
 
-Link para descargar APK:
-https://drive.google.com/drive/folders/1DBR1DX1VQpUQPAYm-N-pv3xX6QlI0Jcq?usp=sharing
+Link para descargar APK: https://drive.google.com/file/d/1BMOSF1H419S3Wm_RhT9UBiim2r-zy0Ss/view?usp=sharing
 
-Link para ver video presentación:
-Versión 1: https://youtu.be/_v96JOND8ZA
-Versión 2: https://youtu.be/bzqtQ8HaO8I
-Versión 3: https://youtu.be/yCP_6srpcXY
+
+Link para ver video presentación: https://youtu.be/cPclLaAWCRA

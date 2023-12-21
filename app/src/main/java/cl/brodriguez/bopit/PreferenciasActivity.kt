@@ -101,7 +101,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         // referencia del switch
         val switchPreference = findPreference<SwitchPreferenceCompat>("novolveramostrar")
-        Toast.makeText(requireContext(), "ME CAGO EN TODO", Toast.LENGTH_SHORT).show()
 
         val sharedPreferences = requireActivity().getSharedPreferences("NoVolverAMostrar", Context.MODE_PRIVATE)
         val valorNoVolverAMostrar = sharedPreferences.getString("NoVolverAMostrar", "")
@@ -114,6 +113,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val editor = sharedPreferences.edit()
             editor.putString("NoVolverAMostrar", switched.toString())
             editor.apply()
+
 
 
             true
