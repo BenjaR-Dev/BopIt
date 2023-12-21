@@ -9,7 +9,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textViewMejorPuntaje"
+            android:id="@+id/TextView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="textViewMejorPuntaje"
@@ -34,7 +34,7 @@
             android:layout_height="553dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewMejorPuntaje">
+            app:layout_constraintTop_toBottomOf="@+id/TextView7">
 
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

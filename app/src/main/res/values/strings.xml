@@ -22,8 +22,12 @@
     <string name="title_activity_preferencias">PreferenciasActivity</string>
 
     //Pantalla final
-    <string name="PuntajeObtenido">Tu puntaje obtenido fue:</string>
-    <string name="PuntajeMayor">Tu mejor puntaje es:</string>
+    <string name="PuntajeMayorPrevio">Tu mejor puntaje es:</string>
+    <string name="PuntajeObtenido">Tu puntaje obtenido en esta partida fue:</string>
+    <string name="PuntajeMayorSuperado">Superaste el record, felicidades!</string>
+    <string name="PuntajeMayorNoSuperado">No superaste el record, sigue jugando!</string>
+    <string name="PuntajeMayorNuevo">Tu nuevo mejor puntaje es:</string>
+    <string name="PuntajeMayorSeMantiene">El mejor puntaje sigue siendo:</string>
     <string name="BotonSalir">Volver al menú</string>
 
     <!-- Preference Titles -->

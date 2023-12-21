@@ -53,6 +53,13 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
     private var lastZ: Float = 0f
     private var lastTime: Long = 0
 
+    //
+    private var dif1: Boolean = false
+    private var dif2: Boolean = false
+    private var dif3: Boolean = false
+    private var dif4: Boolean = false
+    private var dif5: Boolean = false
+
     //Variables para verificar qué acción se está realizando y cual se solicita
     private var ultimaAccionRealizada: TipoAccion = TipoAccion.Reposo
     private var accionSolicitada: TipoAccion = TipoAccion.Reposo
@@ -108,11 +115,6 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
         mediaPlayer2 = MediaPlayer.create(this, R.raw.defeat)
         mediaPlayer3 = MediaPlayer.create(this, R.raw.background)
 
-        //Velocidad del audio de fondo
-        val playbackParams = PlaybackParams()
-        playbackParams.speed = 1.0f
-        mediaPlayer3.playbackParams = playbackParams
-
         //Se define el audio de fondo en bucle y se inicia
         mediaPlayer3.isLooping = true
         mediaPlayer3.start()
@@ -144,37 +146,52 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
         if (total < saltoDeNivel){
             tiempoCuentaRegresiva = 5000
             aumentarVelocidadAudio(1f)
+            dif1 = true
 
         }else if (total < saltoDeNivel*2){
             tiempoCuentaRegresiva = 4000
             aumentarVelocidadAudio(1.2f)
+            dif2 = true
 
         }else if (total < saltoDeNivel*3){
             tiempoCuentaRegresiva = 3000
             aumentarVelocidadAudio(1.4f)
+            dif3 = true
 
         }else if (total < saltoDeNivel*4){
             tiempoCuentaRegresiva = 2000
             aumentarVelocidadAudio(1.7f)
+            dif4 = true
 
         }else if (total < saltoDeNivel*5){
             tiempoCuentaRegresiva = 1000
             aumentarVelocidadAudio(2f)
+            dif5 = true
 
         }
 
     }
 
     private fun aumentarVelocidadAudio(velocidad: Float){
-        val playbackParams = PlaybackParams()
-        playbackParams.speed = velocidad
-        mediaPlayer3.playbackParams = playbackParams
+
+        if (vidasRestantes > 0){
+            val playbackParams = PlaybackParams()
+            playbackParams.speed = velocidad
+            mediaPlayer3.playbackParams = playbackParams
+        }
     }
 
     private fun comprobarAccion(){
 
         //Si el juego queda sin vidas
-        if (vidasRestantes <= 0){
+        if (vidasRestantes == 0){
+            vidasRestantes = -1
+            mediaPlayer.stop()
+            mediaPlayer2.stop()
+            mediaPlayer3.stop()
+            mediaPlayer.release()
+            mediaPlayer2.release()
+            mediaPlayer3.release()
             val intent = Intent(this, PantallaFinActivity::class.java)
             intent.putExtra("PUNTAJE", puntaje)
             startActivity(intent)
@@ -213,7 +230,7 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
         countDownTimer = object : CountDownTimer(tiempoCuentaRegresiva, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 //Cada segundo
-                val segundosRestantes = millisUntilFinished / 1000
+                val segundosRestantes = millisUntilFinished / 1000 + 1
                 textViewTiempo.text = "Tiempo restante: $segundosRestantes segundos"
 
                 if (vidasRestantes <= 0){
@@ -239,7 +256,7 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
     }
 
     private fun aleatorizarAccion() {
-        var numeroRandom: Int = Random.nextInt(0, 5)
+        var numeroRandom: Int = Random.nextInt(0, 4)
 
         if (numeroRandom == 0) {
             accionSolicitada = TipoAccion.Deslizamiento_arriba
@@ -325,17 +342,14 @@ class PantallaJuegoActivity : AppCompatActivity(), SensorEventListener  {
     }
 
     fun sonidoDerrota(){
-        mediaPlayer2.stop()
-        mediaPlayer2 = MediaPlayer.create(this, R.raw.defeat)
-        mediaPlayer2.start()
+
+        if (vidasRestantes > 0){
+            mediaPlayer2.stop()
+            mediaPlayer2 = MediaPlayer.create(this, R.raw.defeat)
+            mediaPlayer2.start()
+        }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mediaPlayer.release()
-        mediaPlayer2.release()
-        mediaPlayer3.release()
-    }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         gestureDetector.onTouchEvent(event)

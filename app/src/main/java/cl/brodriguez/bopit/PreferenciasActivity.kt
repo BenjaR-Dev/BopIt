@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import android.content.Context
-import androidx.preference.EditTextPreference
-import android.content.SharedPreferences
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -40,7 +38,7 @@ class PreferenciasActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("PuntajeMayor", Context.MODE_PRIVATE)
         val mejorPuntaje = sharedPreferences.getInt("puntaje_mayor", 0)
 
-        textViewMejorPuntaje = findViewById(R.id.textViewMejorPuntaje)
+        textViewMejorPuntaje = findViewById(R.id.TextView7)
 
         textViewMejorPuntaje.text = "El mejor puntaje es: $mejorPuntaje"
 
@@ -59,7 +57,6 @@ class PreferenciasActivity : AppCompatActivity() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        //Pantalla completa
 
         return when (item.itemId) {
             android.R.id.home -> {

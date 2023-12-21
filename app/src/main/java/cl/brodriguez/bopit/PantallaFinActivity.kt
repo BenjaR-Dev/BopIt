@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 class PantallaFinActivity : AppCompatActivity() {
 
     private lateinit var textViewPuntajeObtenido: TextView
-    private lateinit var textViewPuntajeMayor: TextView
+    private lateinit var textViewPuntajeMayorPrevio: TextView
+    private lateinit var textViewResultado: TextView
+    private lateinit var textViewConclusion: TextView
+    private lateinit var textViewPuntajeMayorNuevo: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,25 +28,37 @@ class PantallaFinActivity : AppCompatActivity() {
                 )
 
         //Text views
-        textViewPuntajeObtenido = findViewById(R.id.textViewPuntajeObtenido)
-        textViewPuntajeMayor = findViewById(R.id.textViewMejorPuntaje)
+        textViewPuntajeMayorPrevio = findViewById(R.id.TextView2)
+        textViewPuntajeObtenido = findViewById(R.id.TextView4)
+        textViewResultado = findViewById(R.id.TextView5)
+        textViewConclusion = findViewById(R.id.TextView6)
+        textViewPuntajeMayorNuevo = findViewById(R.id.TextView7)
 
         //Recuperar valor
         val puntajeObtenido = intent.getIntExtra("PUNTAJE", 0)
+        Toast.makeText(applicationContext, "$puntajeObtenido", Toast.LENGTH_SHORT).show()
         textViewPuntajeObtenido.text = "$puntajeObtenido"
 
         //Guardar puntaje máximo
         val sharedPreferences = getSharedPreferences("PuntajeMayor", Context.MODE_PRIVATE)
-        val puntajeMayor = sharedPreferences.getInt("puntaje_mayor", 0)
+        val puntajeMayorPrevio = sharedPreferences.getInt("puntaje_mayor", 0)
 
-        if (puntajeObtenido > puntajeMayor){
+        if (puntajeObtenido > puntajeMayorPrevio){
             val editor = sharedPreferences.edit()
             editor.putInt("puntaje_mayor", puntajeObtenido)
             editor.apply()
+            textViewPuntajeMayorNuevo.text = "$puntajeObtenido"
+            textViewResultado.text = getString(R.string.PuntajeMayorSuperado)
+            textViewConclusion.text = getString(R.string.PuntajeMayorNuevo)
+        }else{
+            textViewPuntajeMayorNuevo.text = "$puntajeMayorPrevio"
+            textViewResultado.text = getString(R.string.PuntajeMayorNoSuperado)
+            textViewConclusion.text = getString(R.string.PuntajeMayorSeMantiene)
         }
 
-        //Mostrar puntaje máximo
-        textViewPuntajeMayor.text = "$puntajeMayor"
+        //Mostrar puntajes máximos
+        textViewPuntajeMayorPrevio.text = "$puntajeMayorPrevio"
+
 
     }
 
